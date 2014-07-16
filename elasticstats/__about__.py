@@ -11,9 +11,9 @@ __uri__ = "https://github.com/ssaw/elasticstats"
 
 __version__ = "0.1.0"
 
-__author__ = "LYST LTD"
+__author__ = "Lyst LTD"
 __email__ = "info@lyst.com"
 
 __license__ = "LGPLv3"
-__copyright__ = "Copyright 2013-2014 %s" % __author__
+__copyright__ = "Copyright 2014 %s" % __author__
 
