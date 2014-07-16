@@ -22,12 +22,14 @@ def main(args):
         try:
             index_stats = es.get_index_stats(es_url)
             node_stats = es.get_all_node_stats(es_url)
+            shard_stats = es.get_shard_stats(es_url)
         except (ValueError, socket.error) as exc:
             print >>sys.stderr, exc
             pass
         else:
             carbon.push_index_stats(carbon_host, index_stats, prefix)
             carbon.push_node_stats(carbon_host, node_stats, prefix)
+            carbon.push_shard_stats(carbon_host, shard_stats, prefix)
 
         end = time.time()
 

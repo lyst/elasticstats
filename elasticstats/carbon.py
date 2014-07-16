@@ -38,6 +38,16 @@ def prepare_stats(stats, prefix):
     return keys
 
 
+def send_to_graphite(host, port, data):
+    payload = pickle.dumps(data)
+    header = struct.pack("!L", len(payload))
+    message = header + payload
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect((host, port))
+    sock.sendall(message)
+    sock.close()
+
+
 def push_index_stats(graphite, stats, prefix):
     keys = prepare_stats(stats, prefix)
     send_to_graphite(graphite[0], graphite[1], keys)
@@ -48,11 +58,6 @@ def push_node_stats(graphite, stats, prefix):
     send_to_graphite(graphite[0], graphite[1], keys)
 
 
-def send_to_graphite(host, port, data):
-    payload = pickle.dumps(data)
-    header = struct.pack("!L", len(payload))
-    message = header + payload
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect((host, port))
-    sock.sendall(message)
-    sock.close()
+def push_shard_stats(graphite, stats, prefix):
+    keys = prepare_stats(stats, prefix)
+    send_to_graphite(graphite[0], graphite[1], keys)
