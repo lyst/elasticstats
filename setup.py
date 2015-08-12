@@ -1,5 +1,6 @@
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 base_dir = os.path.dirname(__file__)
@@ -20,5 +21,8 @@ setup(
     author_email=about['__email__'],
 
     packages=find_packages(),
+    entry_points={
+        'console_scripts': ['elasticstats=elasticstats.main:main'],
+    },
     zip_safe=False,
 )
