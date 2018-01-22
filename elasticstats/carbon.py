@@ -1,9 +1,12 @@
 from __future__ import absolute_import
 
-import cPickle as pickle
+import pickle
 import socket
 import struct
 import time
+
+from future import standard_library
+standard_library.install_aliases()
 
 
 def walk(node, handle, transform=None, stack=None):
@@ -12,7 +15,7 @@ def walk(node, handle, transform=None, stack=None):
     if transform:
         stack, node = transform(stack, node)
 
-    for key, item in node.items():
+    for key, item in list(node.items()):
         if isinstance(item, dict):
             walk(item, handle, transform, stack + [key])
         else:

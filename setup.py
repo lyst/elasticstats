@@ -19,7 +19,9 @@ setup(
     url=about['__uri__'],
     author=about['__author__'],
     author_email=about['__email__'],
-
+    install_requires=[
+        'future'
+    ],
     packages=find_packages(),
     entry_points={
         'console_scripts': ['elasticstats=elasticstats.main:main'],
