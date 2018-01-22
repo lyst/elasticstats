@@ -9,7 +9,7 @@ __summary__ = (
 )
 __uri__ = "https://github.com/lyst/elasticstats"
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 __author__ = "Lyst Ltd"
 __email__ = "info@lyst.com"

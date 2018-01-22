@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-from __future__ import print_function
 
 import json
 
@@ -43,5 +42,4 @@ def get_shard_stats(es_url):
     except HTTPError as exc:
         response = exc
     json_data = json.loads(response.read())
-    print(json_data)
     return json_data

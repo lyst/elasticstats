@@ -14,10 +14,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('elasticsearch_url', help='URL for Elasticsearch')
     parser.add_argument('carbon_host', help='Hostname of the Carbon server')
-    parser.add_argument('carbon_port', type=int, help='Port of the Carbon server')
+    parser.add_argument(
+        'carbon_port', type=int, help='Port of the Carbon server')
     parser.add_argument('prefix', help='Graphite prefix to use')
-    parser.add_argument('-p', '--poll', type=int, default=5,
-                        help='How many seconds to wait before polling again. Defaults to 5')
+    parser.add_argument(
+        '-p', '--poll', type=int, default=5,
+        help='How many seconds to wait before polling again. Defaults to 5')
     parser.add_argument('--master-only', action='store_true')
     args = parser.parse_args()
     carbon_server = (args.carbon_host, int(args.carbon_port))
